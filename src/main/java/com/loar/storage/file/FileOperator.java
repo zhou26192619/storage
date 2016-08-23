@@ -32,6 +32,17 @@ public class FileOperator {
         return fDir.exists();
     }
 
+    public static boolean delete(String filePath) {
+        if (filePath == null) {
+            return true;
+        }
+        File fDir = new File(filePath);
+        if (fDir.exists()) {
+            return fDir.delete();
+        }
+        return true;
+    }
+
     public static long fileSize(String filePath) throws Exception {
         if (isExists(filePath)) {
             File file = new File(filePath);
