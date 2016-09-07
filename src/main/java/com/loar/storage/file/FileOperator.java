@@ -74,7 +74,7 @@ public class FileOperator {
     }
 
 
-    public static File appendToFile(String content, String dir, String fileName) throws IOException {
+    public static synchronized File appendToFile(String content, String dir, String fileName) throws IOException {
         File file = createFile(dir, fileName);
         if (content == null) {
             return file;
@@ -93,7 +93,7 @@ public class FileOperator {
         os.close();
     }
 
-    public static String inputstreamToString(InputStream in) {
+    public static synchronized String inputstreamToString(InputStream in) {
         StringBuilder stringBuilder = new StringBuilder();
         try {
             BufferedReader bf = new BufferedReader(new InputStreamReader(in));
