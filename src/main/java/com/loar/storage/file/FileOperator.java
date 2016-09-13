@@ -19,7 +19,6 @@ public class FileOperator {
      * @return
      */
     public static File createFile(String dir, String fileName) {
-
         File fDir = new File(dir);
         if (!fDir.exists()) {
             fDir.mkdirs();
