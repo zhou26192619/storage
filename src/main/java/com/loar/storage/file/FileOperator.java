@@ -43,6 +43,33 @@ public class FileOperator {
         return true;
     }
 
+    public static void deleteAllFile(String filePath) {
+        if (filePath == null) {
+            return;
+        }
+        File fDir = new File(filePath);
+        if (fDir.exists()) {
+            deleteAllFile(fDir);
+        }
+    }
+
+    /**
+     * 递归删除指定路径下的所有文件
+     *
+     * @param file
+     */
+    public static void deleteAllFile(File file) {
+        if (file.isFile() || file.list().length == 0) {
+            file.delete();
+        } else {
+            File[] files = file.listFiles();
+            for (File f : files) {
+                deleteAllFile(f);//递归删除每一个文件
+                f.delete();//删除该文件夹
+            }
+        }
+    }
+
     public static long fileSize(String filePath) throws Exception {
         if (isExists(filePath)) {
             File file = new File(filePath);
